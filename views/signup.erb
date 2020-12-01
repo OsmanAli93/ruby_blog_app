@@ -1,0 +1,49 @@
+<header id="signup-header" class="header">
+    <div class="container">
+        <div class="row">
+            <a href="/" class="logo">Blogger</a>
+            <ul class="header-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Post</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main id="signup" class="section-gap">
+    <div class="container">
+        
+        <form action="/signup/add" method="post" id="signup-form">
+
+            <% if status == 'success'%>
+                <div class="message">Form Submitted Successfully <span class="close">X</span></div>
+            <% end %>
+
+            <div class="form-group">
+                <label for="first_name">First Name :</label>
+                <input type="text" name="first_name" id="first_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name :</label>
+                <input type="text" name="last_name" id="last_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password :</label>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Repeat Password :</label>
+                <input type="password" name="repeat_password" id="repeat_password" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</main>
