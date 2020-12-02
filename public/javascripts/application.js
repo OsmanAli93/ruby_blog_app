@@ -31,4 +31,6 @@ setTimeout(() => {
     const message = document.querySelector('.message');
     message.style.display = 'none';
 
-}, 2000)
+}, 4000)
+
+ClassicEditor.create(document.getElementById('editor'));

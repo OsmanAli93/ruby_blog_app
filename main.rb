@@ -118,3 +118,17 @@ get '/article' do
   erb :article
 
 end
+
+post '/article/new' do
+  
+  user_id = params["user_id"]
+  title = params["title"]
+  img_url = params["image_url"]
+  message = params["editor"]
+
+  run_sql("INSERT INTO posts(user_id, title, image_url, message) values (#{user_id}, '#{title}', '#{img_url}', '#{message}')")
+
+  redirect '/article?status=success'
+  
+
+end

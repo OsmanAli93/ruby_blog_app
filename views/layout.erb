@@ -10,7 +10,10 @@
 
   <%= yield %>
 
-
+  <script src="/javascripts/ckeditor/ckeditor.js"></script>
   <script src="/javascripts/application.js"></script>
+  <script>
+    ClassicEditor.create(document.getElementById('editor'));
+  </script>
 </body>
 </html>
