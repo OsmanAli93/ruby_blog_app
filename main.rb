@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'pg'
+require 'bcrypt'
+
+enable :sessions
 
 def run_sql (sql)
 
@@ -10,6 +14,32 @@ def run_sql (sql)
   return blog
 
 end 
+
+def logged_in?
+
+  !!session[:id]
+
+end
+
+def user_found (users)
+
+  if users.to_a.length > 0
+    users[0]
+  else 
+    nil
+  end
+
+end
+
+def current_user
+
+  user_id = session[:id]
+  users = run_sql("SELECT * FROM users WHERE user_id = #{user_id}")
+  user = user_found(users)
+
+  return user
+
+end
 
 
 get '/' do
@@ -51,4 +81,40 @@ end
 
 
 
+post '/submit' do
+  
+  user_email = params["email"]
+  user_password = params["password"]
+  
+  user = run_sql("SELECT * FROM users WHERE email = '#{user_email}'")[0]
 
+  if user["email"] == user_email && BCrypt::Password.new(user["password"]) == user_password
+
+    session[:id] = user["user_id"]
+
+    redirect '/'
+    
+  else 
+
+    "FALSE"
+
+  end
+
+
+end
+
+
+delete '/logout' do
+  
+  session[:id] = nil
+  
+  redirect '/?status=logout'
+
+end
+
+
+get '/article' do
+  
+  erb :article
+
+end

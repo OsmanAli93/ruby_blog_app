@@ -1,6 +1,30 @@
 <header id="main-header" class="header">
     <div class="container">
-        asdasd
-        
+        <div class="row">
+            <a href="/" class="logo">Blogger</a>
+            <ul class="header-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+
+                <% if logged_in? %>
+                    <li><a href="/article">Send Article</a></li>
+                <% else %>
+                    <li><a href="/login">Send Article</a></li>
+                <% end %>
+
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
     </div>
 </header>
+<div id="banner">
+    <div class="banner-text">
+        <h2>Blogger</h2>
+        <small>For blogger by blogger</small>
+    </div>
+</div>
+
+<form action="/logout" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <button>Logout</button>
+</form>

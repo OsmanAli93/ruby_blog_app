@@ -125,6 +125,34 @@ ul {
     padding: 100px 0;
 }
 
+.header {
+    background-color: #007bff;
+    padding: 15px 0;
+}
+
+.header .header-links {
+    display: flex;
+}
+
+.header .header-links li {
+    margin: 0 15px;
+}
+
+.header .header-links li a {
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.header .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 /* ========= LOGIN PAGE ============ */
 
@@ -163,35 +191,59 @@ ul {
 }
 
 
-/* ========= SIGNUP PAGE ============ */
 
-#signup-header {
-    background-color: #007bff;
-    padding: 15px 0;
-}
 
-#signup-header .row {
+/* ========= MAIN HEADER ============ */
+
+
+
+
+/* ========= BANNER ============ */
+
+#banner {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    min-height: 60vh;
+    background: url("https://images.pexels.com/photos/2217365/pexels-photo-2217365.jpeg");
+    background-size: cover;
+    background-position: center center;
 }
 
-#signup-header .header-links {
-    display: flex;
+#banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+
+}
+ 
+#banner .banner-text {
+    position: relative;
+    text-align: center;
 }
 
-#signup-header .header-links li {
-    margin: 0 15px;
-}
-
-#signup-header .header-links li a {
+#banner .banner-text h2 {
+    font-size: 55px;
     color: #fff;
     text-transform: uppercase;
-    padding: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
+
 }
+
+
+#banner .banner-text small {
+    font-size: 18px;
+    color: #fff;
+}
+
+
+/* ========= SIGNUP PAGE ============ */
+
+
 
 #signup form {
     width: 60%;
@@ -213,4 +265,11 @@ ul {
     border: none;
     border-radius: 5px;
     font-weight: bold;
+}
+
+/* ========= ARTICLE PAGE ============ */
+
+#article form {
+    width: 50%;
+    margin: auto;
 }
