@@ -1,13 +1,9 @@
-     
 require 'sinatra'
-require 'sinatra/reloader'
-require 'pry'
-require 'pg'
-require 'bcrypt'
+require 'sinatra/reloader' if development?
 
 def run_sql (sql)
 
-  db = PG.connect(dbname: 'blogger')
+  db = PG.connect(ENV['DATABASE_URL'] || {dbname: 'blogger'})
   blog = db.exec(sql)
   db.close
 

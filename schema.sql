@@ -1,0 +1,4 @@
+
+CREATE TABLE users (id SERIAL PRIMARY KEY, first_name VARCHAR(50), last_name VARCHAR(50), email VARCHAR(30), password TEXT);
+
+CREATE TABLE posts (id BIGSERIAL PRIMARY KEY, posted_by  title VARCHAR(100), message TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
