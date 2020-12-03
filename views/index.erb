@@ -8,7 +8,7 @@
 
                 <% if logged_in? %>
                     <li><a href="/article">Send Article</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="/posts/all?id=<%= current_user["id"] %>">My Posts</a></li>
                     <li>
                         <form action="/logout" method="POST">
                             <input type="hidden" name="_method" value="delete">
@@ -24,6 +24,7 @@
         </div>
     </div>
 </header>
+
 <div id="banner">
     <div class="banner-text">
         <h2>Blogger</h2>
@@ -46,7 +47,7 @@
                             <h3><%= post["title"] %></h3>
                             <p class="date">
                             <%= Date.parse(post["created_at"]).strftime("%m %b %Y") %>
-                            / <%= current_user["first_name"] %> <%= current_user["last_name"]%>
+                            / <%= user["first_name"] %> <%= user["last_name"]%>
                             </p>
                             <p class="content text-justify"><%= post["message"].slice(0..250) %></p>
                         </div>

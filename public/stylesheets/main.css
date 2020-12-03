@@ -43,6 +43,7 @@ ul {
 
 .row {
     display: flex;
+    justify-content: space-between;
 }
 
 
@@ -119,6 +120,10 @@ ul {
 
 .mb-10 {
     margin-bottom: 10px;
+}
+
+.px-15 {
+    padding: 0 15px;
 }
 
 .grey {
@@ -322,13 +327,15 @@ ul {
 /* ========= MAIN PAGE ============ */
 
 .post-block {
-    flex: 0 0 33.33%;
+    flex: 0 0 30%;
     background-color: #fff;
 }
 
 .post-details {
     padding: 30px;
 }
+
+
 
 .post-details h3,
 .post-details .date {

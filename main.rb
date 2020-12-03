@@ -45,10 +45,12 @@ end
 get '/' do
 
   posts = run_sql("SELECT * FROM posts")
+  user = run_sql("SELECT * FROM users")[0]
   
   
   erb :index, locals: {
-    posts: posts
+    posts: posts,
+    user: user
   }
 end
 
@@ -132,7 +134,8 @@ post '/article/new' do
   img_url = params["image_url"]
   message = params["editor"]
 
-  run_sql("INSERT INTO posts(user_id, title, image_url, message) values (#{user_id}, '#{title}', '#{img_url}', '#{message}')")
+
+  run_sql("INSERT INTO posts(user_id, title, image_url, message) VALUES(#{user_id}, $$#{title}$$, $$#{img_url}$$, $$#{message}$$)")
 
   redirect '/article?status=success'
   
@@ -148,4 +151,15 @@ get '/viewpage' do
   erb :viewpage, locals: {
     post: post
   }
+end
+
+get '/posts/all' do
+  
+  user_id = params["id"]
+  user = run_sql("SELECT * FROM posts WHERE user_id = #{user_id}")
+
+  erb :mypost, locals: {
+    user: user
+  }
+
 end
