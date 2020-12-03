@@ -31,7 +31,7 @@
         <form action="article/new" method="POST">
 
             <h2 class="text-center">Post An Article</h2>
-            <input type="hidden" name="user_id" value="<%= current_user["user_id"] %>">
+            <input type="hidden" name="user_id" value="<%= current_user["id"] %>">
             
             <div class="form-group">
                 <label for="title">Title :</label>

@@ -38,12 +38,17 @@
                 <div class="post-block">
                     <div class="post-inner">
                         <div class="post-img">
-                            <img src="<%= post["image_url"] %>" alt="">
+                            <a href="/viewpage?posts=<%= post["id"] %>">
+                                <img src="<%= post["image_url"] %>" alt="" class="w-100">
+                            </a>
                         </div>
                         <div class="post-details">
                             <h3><%= post["title"] %></h3>
-                            <p><%= post["created_at"] %></p>
-                            <p class="text-justify"><%= post["message"].slice(0..300) %></p>
+                            <p class="date">
+                            <%= Date.parse(post["created_at"]).strftime("%m %b %Y") %>
+                            / <%= current_user["first_name"] %> <%= current_user["last_name"]%>
+                            </p>
+                            <p class="content text-justify"><%= post["message"].slice(0..250) %></p>
                         </div>
                     </div>
                 </div>
@@ -51,3 +56,5 @@
         </div>
     </div>
 </main>
+
+

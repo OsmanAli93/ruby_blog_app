@@ -34,7 +34,7 @@ end
 def current_user
 
   user_id = session[:id]
-  users = run_sql("SELECT * FROM users WHERE user_id = #{user_id}")
+  users = run_sql("SELECT * FROM users WHERE id = #{user_id}")
   user = user_found(users)
 
   return user
@@ -45,6 +45,7 @@ end
 get '/' do
 
   posts = run_sql("SELECT * FROM posts")
+  
   
   erb :index, locals: {
     posts: posts
@@ -95,9 +96,9 @@ post '/submit' do
 
   if user["email"] == user_email && BCrypt::Password.new(user["password"]) == user_password
 
-    session[:id] = user["user_id"]
+    session[:id] = user["id"]
 
-    redirect '/'
+    redirect '/?status=logged'
     
   else 
 
@@ -136,4 +137,15 @@ post '/article/new' do
   redirect '/article?status=success'
   
 
+end
+
+get '/viewpage' do
+
+  post_id = params["posts"]
+  post = run_sql("SELECT * FROM posts WHERE id = #{post_id}")[0]
+  
+
+  erb :viewpage, locals: {
+    post: post
+  }
 end

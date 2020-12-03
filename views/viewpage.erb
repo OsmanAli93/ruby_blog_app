@@ -1,0 +1,62 @@
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <a href="/" class="logo">Blogger</a>
+            <ul class="header-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+
+                <% if logged_in? %>
+                    <li><a href="/article">Send Article</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            <input type="hidden" name="_method" value="delete">
+                            <button class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                <% else %>
+                    <li><a href="/login">Send Article</a></li>
+                    <li><a href="#">Contact</a></li>
+                <% end %>
+
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main id="view" class="section-gap">
+    <div class="container">
+        <article>
+            <div class="title-block text-center">
+                <h2 class="title"><%= post["title"] %></h2>
+                <p class="title-details"> 
+                <%= current_user["first_name"] %> 
+                <%= current_user["last_name"] %> 
+                <span class="divider">/</span> <%= Date.parse(post["created_at"]).strftime("%d/%m/%Y") %>
+                </p> 
+            </div>
+
+            <div class="post-content">
+                <%= post["message"] %>
+            </div>
+
+            <% if logged_in? %>
+
+                <a href="/article" class="article-link">Send Article</a>
+
+            <% else %>
+
+                <a href="/login" class="article-link">Send Article</a>
+
+            <% end %>
+            
+        </article>
+    </div>
+</main>
+
+<footer>
+    <div class="container text-center">
+        Copyright &copy; <%= Date.today.year %> Blogger
+    </div>
+</footer>
