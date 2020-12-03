@@ -8,11 +8,18 @@
 
                 <% if logged_in? %>
                     <li><a href="/article">Send Article</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            <input type="hidden" name="_method" value="delete">
+                            <button class="logout-btn">Logout</button>
+                        </form>
+                    </li>
                 <% else %>
                     <li><a href="/login">Send Article</a></li>
+                    <li><a href="#">Contact</a></li>
                 <% end %>
 
-                <li><a href="#">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -24,7 +31,23 @@
     </div>
 </div>
 
-<form action="/logout" method="POST">
-    <input type="hidden" name="_method" value="delete">
-    <button>Logout</button>
-</form>
+<main class="section-gap">
+    <div class="container">
+        <div class="row">
+            <% posts.each do |post| %>
+                <div class="post-block">
+                    <div class="post-inner">
+                        <div class="post-img">
+                            <img src="<%= post["image_url"] %>" alt="">
+                        </div>
+                        <div class="post-details">
+                            <h3><%= post["title"] %></h3>
+                            <p><%= post["created_at"] %></p>
+                            <p class="text-justify"><%= post["message"].slice(0..300) %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</main>

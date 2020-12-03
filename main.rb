@@ -43,7 +43,12 @@ end
 
 
 get '/' do
-  erb :index
+
+  posts = run_sql("SELECT * FROM posts")
+  
+  erb :index, locals: {
+    posts: posts
+  }
 end
 
 
