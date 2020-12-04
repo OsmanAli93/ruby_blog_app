@@ -28,7 +28,36 @@
 <main class="section-gap">
     <div class="container">
         <div class="row">
-            <%=user[0]%>
+        <% posts.each do |post| %>
+                <div class="post-block">
+                    <div class="post-inner">
+                        <div class="post-img">
+                            <a href="/viewpage?posts=<%= post["id"] %>">
+                                <img src="<%= post["image_url"] %>" alt="" class="w-100">
+                            </a>
+                        </div>
+                        <div class="post-details">
+                            <h3><%= post["title"] %></h3>
+                            <p class="date">
+                            <%= Date.parse(post["created_at"]).strftime("%m %b %Y") %>
+                            / <%= user["first_name"] %> <%= user["last_name"]%>
+                            </p>
+                            <p class="content text-justify"><%= post["message"].slice(0..250) %></p>
+
+                             <div class="post-btn">
+                                <form action="/posts/<%= post["id"] %>" id="delete-post" method="POST">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button id="delete-btn">Delete</button>
+                                </form>
+
+                                <a href="/posts/edit/<%= post["id"] %>" id="edit-btn">Edit</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+        <% end %>
+        
         </div>
     </div>
 </main>

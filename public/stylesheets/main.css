@@ -202,6 +202,40 @@ ul {
     margin-bottom: 15px;
 }
 
+.read-more {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 24px;
+    color: #000;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    transition: .25s;
+}
+
+.read-more:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#delete-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 24px;
+    border: 1px solid #dc3545;
+    border-radius: 3px;
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#edit-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #007bff;
+    padding: 8px 34px;
+    border-radius: 3px;
+    color: #fff;
+}
+
 
 /* ========= LOGIN PAGE ============ */
 
@@ -244,7 +278,12 @@ ul {
 
 /* ========= MAIN HEADER ============ */
 
-
+#main-header {
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    z-index: 999;
+}
 
 
 /* ========= BANNER ============ */
@@ -366,6 +405,11 @@ ul {
     margin-bottom: 50px;
 }
 
+.post-content .image {
+    display: none;
+}
+
+
 #view a.article-link {
     padding: 8px 24px;
     border: 1px solid #007bff;
@@ -379,6 +423,36 @@ ul {
     background-color: #007bff;
     color: #fff;
 }
+
+/* ========= EDIT PAGE ============ */
+
+
+#edit h1 {
+    margin-bottom: 15px;
+}
+
+#edit form {
+    width: 50%;
+    margin: auto;
+}
+
+#edit input {
+    margin-bottom: 15px;
+}
+
+#edit .edit-btn {
+    margin-top: 20px;
+    padding: 8px 38px;
+    background-color: #007bff;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    transition: .25s;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
 
 
 /* ========= FOOTER ============ */

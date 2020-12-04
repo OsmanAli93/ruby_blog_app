@@ -137,7 +137,7 @@ post '/article/new' do
 
   run_sql("INSERT INTO posts(user_id, title, image_url, message) VALUES(#{user_id}, $$#{title}$$, $$#{img_url}$$, $$#{message}$$)")
 
-  redirect '/article?status=success'
+  redirect '/'
   
 
 end
@@ -156,10 +156,32 @@ end
 get '/posts/all' do
   
   user_id = params["id"]
-  user = run_sql("SELECT * FROM posts WHERE user_id = #{user_id}")
+  user = run_sql("SELECT * FROM users")[0]
+  posts = run_sql("SELECT * FROM posts WHERE user_id = #{user_id}")
 
   erb :mypost, locals: {
+    posts: posts,
     user: user
   }
+
+end
+
+get '/posts/edit/:id' do
+  
+  id = params["id"]
+  post = run_sql("SELECT * FROM posts WHERE id = #{id}")[0]
+
+  erb :edit, locals: {
+    post: post
+  }
+
+end
+
+delete '/posts/:id' do
+  
+  id = params["id"]
+  run_sql("DELETE FROM posts WHERE id = #{id}")
+
+  redirect '/'
 
 end

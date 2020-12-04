@@ -33,4 +33,3 @@ setTimeout(() => {
 
 }, 4000)
 
-ClassicEditor.create(document.getElementById('editor'));
