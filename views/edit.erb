@@ -25,7 +25,7 @@
     </div>
 </header>
 
-<main id="edit" class="section-gap vh-100">
+<main id="edit" class="section-gap">
     <div class="container">
         <h1 class="text-center">Edit Post</h1>
 
@@ -33,7 +33,7 @@
             <input type="hidden" name="_method" value="patch">
             <input type="text" name="title" value="<%= post["title"] %>" class="form-control">
             <input type="text" name="image_url" value="<%= post["image_url"]%>" class="form-control">
-            <textarea name="message" id="edit-editor" cols="30" rows="10"></textarea>
+            <textarea name="message" id="edit-editor" cols="30" rows="10" value="<%= post["message"] %>"></textarea>
             <div class="text-center">
                 <button type="submit" class="edit-btn">Edit</button>
             </div>

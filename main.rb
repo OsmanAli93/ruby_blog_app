@@ -177,6 +177,19 @@ get '/posts/edit/:id' do
 
 end
 
+patch '/post/:id' do 
+
+  id = params["id"]
+  title = params["title"]
+  image_url = params["image_url"]
+  message = params["message"]
+
+  run_sql("UPDATE posts SET title='#{title}', image_url='#{image_url}', message='#{message}' WHERE id = #{id} ")
+
+  redirect '/?update=success'
+
+end
+
 delete '/posts/:id' do
   
   id = params["id"]
