@@ -7,6 +7,7 @@ This will require users to sign up before they can have full CRUD capabilites .
 * CSS
 * JAVASCRIPT
 * RUBY (SINATRA)
+* POSTGRES (DATABASE)
 
 # Challenges
 As the app being under development , i face a some quite tricky issues in storing values in the database .
