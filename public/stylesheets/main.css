@@ -44,6 +44,7 @@ ul {
 .row {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 
@@ -366,9 +367,10 @@ ul {
 /* ========= MAIN PAGE ============ */
 
 .post-block {
-    flex: 0 0 30%;
+    flex: 0 0 30%;;
     background-color: #fff;
 }
+
 
 .post-details {
     padding: 30px;

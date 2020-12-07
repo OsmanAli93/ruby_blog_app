@@ -4,8 +4,7 @@ id SERIAL PRIMARY KEY,
 first_name VARCHAR(50), 
 last_name VARCHAR(50), 
 email VARCHAR(30), 
-password TEXT,
-
+password TEXT
 );
 
 CREATE TABLE posts (
@@ -20,5 +19,4 @@ CONSTRAINT fk_users
 FOREIGN KEY(user_id)
 REFERENCES users(id)
 ON DELETE SET NULL
-
 );
